@@ -2,20 +2,17 @@ import React, {useState, useEffect} from "react";
 import PokemonList from "./PokemonList";
 import Pagination from "./Pagination";
 import axios from "axios";
+import PokeImg from "./PokeImg";
 
 function App() {
-
-  console.log("This is the TOP of the APP component"); //console log
   const [pokemon, setPokemon] = useState([]);
-  const [currentPageURL, setCurrentPageURL] = useState("https://pokeapi.co/api/v2/pokemon/?limit=25");
+  const [currentPageURL, setCurrentPageURL] = useState("https://pokeapi.co/api/v2/pokemon/?limit=9");
   const [prevPageURL, setPrevPageURL] = useState();
   const [nextPageURL, setNextPageURL] = useState();
   const [loading, setLoading] = useState(true);
-  console.log("Loading... is TRUE"); //console log
 
-  useEffect(() => {
+  const setPages = () => {
     setLoading(true);
-    console.log("Loading... is TRUE inside of useEffect"); //console log
     let cancel; 
     axios.get(currentPageURL, {
       cancelToken: new axios.CancelToken(c => cancel = c)
@@ -27,6 +24,19 @@ function App() {
     })
     return () => cancel();
     //this return will run when useEffect is invoked again
+  }
+
+  const getIndividualPokemonURL = () => {
+    pokemon.map( async (poke)=> {
+      const result = await axios.get(poke.url);
+      console.log(result.data);
+    })
+  }
+
+
+  useEffect(() => {
+    setPages();
+    getIndividualPokemonURL();
   }, [currentPageURL]);
   //everytime the currentPageURL changes, this component will rerender 
 
@@ -46,6 +56,7 @@ function App() {
   return (
     <>
       <PokemonList pokemon={pokemon}/>
+      <PokeImg pokemon={pokemon}/>
       <Pagination
         goToNextPage ={nextPageURL ? goToNextPage : null}
         goToPrevPage ={prevPageURL ? goToPrevPage : null}

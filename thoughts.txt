@@ -1,0 +1,20 @@
+So I am working on getting the images to appear under each of the pokemon that get printed in the list
+What I did right now is just set the limit to 2 pokemon in the api call setCurrentPageURL 
+When we do useEffect we set the Pokemon variable to response.data.results which is just an array of however many pokemon you called 
+So right now in Pokemon I have Bulba and Ivy 
+
+But inside that array I only get an object with 2 things, name and url 
+So I have to use that URL to access the rest of the information for that one specific pokemon
+So I would need to use that URL to make another API call with that URL??????
+
+Okay so now I have a variable to set the URL
+But how do I actually get it from the data that we have? 
+It must loop through each one when we get the name so look for when we set name... 
+But that's like the final step because we map through each one.... 
+
+Okay so I think what we have to do is think about react projects in parts, 
+so what we can do is create a component called PokeImg where we can solely focus on the images of the pokemon
+so if we can pass the URL of each pokemon to the PokeImg component then we can dig in each pokemon > sprites to find their individual image 
+
+I think we have to go about this project completely different than what my mans was saying
+We should not just be focused on printing a list if that makes sense 
