@@ -5,30 +5,25 @@ import axios from "axios";
 
 function App() {
 
-  //console.log("do we reach the top of the app component?");
+  console.log("This is the TOP of the APP component");
   const [pokemon, setPokemon] = useState([]);
-  // const [pokemon, setPokemon] = useState(["bulba","squirt","char"]);
   const [currentPageURL, setCurrentPageURL] = useState("https://pokeapi.co/api/v2/pokemon/?limit=150");
   const [prevPageURL, setPrevPageURL] = useState();
   const [nextPageURL, setNextPageURL] = useState();
   const [loading, setLoading] = useState(true);
+  console.log("Loading... is TRUE");
 
   useEffect(() => {
     setLoading(true);
-    //console.log("loading is now true")
+    console.log("Loading... is TRUE inside of useEffect");
     let cancel; 
     axios.get(currentPageURL, {
       cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(res => {
-      //console.log("finally finished axios");
-      // console.log(res.data);
-      //console.log("pokemon is now: " + pokemon);
       setLoading(false);
-      //console.log("im assuming we leave here to re render or naw??");
       setPrevPageURL(res.data.previous); 
       setNextPageURL(res.data.next);
       setPokemon(res.data.results);
-      //console.log("just set poke to res so now its: " + pokemon);
     })
     return () => cancel();
     //this return will run when useEffect is invoked again
@@ -43,13 +38,12 @@ function App() {
   }
 
   if (loading) {
-    //console.log("LOADING...");
     return "Loading..."};
+    //So this would return the Loading screen IF TRUE because the App component reaches this return statement before the other one
+    //If loading is set to FALSE, that means it has finished gathering the pokemon list from the API
+    //and should be able to return the below statement 
 
-  //console.log("poke during loading" + pokemon);
   return (
-    //console.log("we're in the APP return statement"),
-    //console.log("poke that gets sent to other component is: " + pokemon),
     <>
       <PokemonList pokemon={pokemon}/>
       <Pagination
