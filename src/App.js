@@ -7,7 +7,7 @@ function App() {
 
   console.log("This is the TOP of the APP component"); //console log
   const [pokemon, setPokemon] = useState([]);
-  const [currentPageURL, setCurrentPageURL] = useState("https://pokeapi.co/api/v2/pokemon/?limit=150");
+  const [currentPageURL, setCurrentPageURL] = useState("https://pokeapi.co/api/v2/pokemon/?limit=25");
   const [prevPageURL, setPrevPageURL] = useState();
   const [nextPageURL, setNextPageURL] = useState();
   const [loading, setLoading] = useState(true);
