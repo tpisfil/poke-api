@@ -41,7 +41,7 @@ function App() {
     return "Loading..."};
     //So this would return the Loading screen IF TRUE because the App component reaches this return statement before the other one
     //If loading is set to FALSE, that means it has finished gathering the pokemon list from the API
-    //and should be able to return the below statement 
+    //and should be able to return the below statement
 
   return (
     <>
