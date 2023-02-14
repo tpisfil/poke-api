@@ -5,17 +5,17 @@ import axios from "axios";
 
 function App() {
 
-  console.log("This is the TOP of the APP component");
+  console.log("This is the TOP of the APP component"); //console log
   const [pokemon, setPokemon] = useState([]);
   const [currentPageURL, setCurrentPageURL] = useState("https://pokeapi.co/api/v2/pokemon/?limit=150");
   const [prevPageURL, setPrevPageURL] = useState();
   const [nextPageURL, setNextPageURL] = useState();
   const [loading, setLoading] = useState(true);
-  console.log("Loading... is TRUE");
+  console.log("Loading... is TRUE"); //console log
 
   useEffect(() => {
     setLoading(true);
-    console.log("Loading... is TRUE inside of useEffect");
+    console.log("Loading... is TRUE inside of useEffect"); //console log
     let cancel; 
     axios.get(currentPageURL, {
       cancelToken: new axios.CancelToken(c => cancel = c)
