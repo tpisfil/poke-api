@@ -2,7 +2,7 @@ import React from 'react';
 
 const PokemonList = ({pokemon}) => {
 //1. destructuring pokemon from props.pokemon to use it here
-//if you didnt do this you would have to type props everytime 
+//if you didnt do this you would have to type props.pokemon everytime 
 console.log("made it to the pokeList component"); //console log
     return (
         <div>

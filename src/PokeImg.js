@@ -6,7 +6,7 @@ const PokeImg = ({pokemon}) => {
     return (
         <div>
             {pokemon.map( (poke,index) => 
-            <p>{poke.url}</p>
+            <p key={index}>{poke.url}</p>
             )}
         </div>
     );

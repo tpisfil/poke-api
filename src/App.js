@@ -33,10 +33,13 @@ function App() {
     })
   }
 
+  // getIndividualPokemonURL();
 
   useEffect(() => {
     setPages();
     getIndividualPokemonURL();
+    console.log("so it doenst make it here on the first run?");
+
   }, [currentPageURL]);
   //everytime the currentPageURL changes, this component will rerender 
 
