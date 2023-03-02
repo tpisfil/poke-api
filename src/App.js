@@ -10,6 +10,7 @@ function App() {
   const [prevPageURL, setPrevPageURL] = useState();
   const [nextPageURL, setNextPageURL] = useState();
   const [loading, setLoading] = useState(true);
+  console.log("hello there mate I should be running first");
 
   const setPages = () => {
     setLoading(true);
@@ -51,6 +52,7 @@ function App() {
   }
 
   if (loading) {
+    console.log("LOADING");
     return "Loading..."};
     //So this would return the Loading screen IF TRUE because the App component reaches this return statement before the other one
     //If loading is set to FALSE, that means it has finished gathering the pokemon list from the API

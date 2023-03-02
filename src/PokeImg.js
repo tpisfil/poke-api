@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PokeImg = ({pokemon}) => {
-// console.log("WE MADE IT TO IMAGES");
+    console.log("WE MADE IT TO IMAGES");
 
     return (
         <div>
